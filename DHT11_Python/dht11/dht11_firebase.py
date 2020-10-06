@@ -8,6 +8,28 @@ import time
 import datetime
 
 
+# initialize GPIO
+GPIO.setwarnings(True)
+GPIO.setmode(GPIO.BCM)
+
+# read data using pin 14
+instance = dht11.DHT11(pin=14)
+
+try:
+    while True:
+        result = instance.read()
+        if result.is_valid():
+            print("Last valid input: " + str(datetime.datetime.now()))
+
+            print("Temperature: %-3.1f C" % result.temperature)
+            print("Humidity: %-3.1f %%" % result.humidity)
+
+        time.sleep(30)
+
+except KeyboardInterrupt:
+    print("Cleanup")
+    GPIO.cleanup()
+
 
 # cred = credentials.Certificate('./<your service account json>')
 cred = credentials.Certificate('/home/pi/Desktop/heyaboshi-manager/DHT11_Python/heyaboshi-manager-firebase-adminsdk-avq9f-8e91ef2815.json')
@@ -36,9 +58,9 @@ users_ref = db.reference('/devices/test_device_1')
 
 # databaseにデータを追加する
 users_ref.child('3').set({
-        'humidity': 38, 
-        'tempareture': 11,
-        'time' : '2020-08-28 10:30:44',
+        'humidity': result.humidity, 
+        'tempareture': result.temperature,
+        'time' : str(datetime.datetime.now()),
         'water_content': 0.2
 })
 
