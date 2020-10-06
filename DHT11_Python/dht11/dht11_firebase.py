@@ -15,8 +15,10 @@ GPIO.setmode(GPIO.BCM)
 # read data using pin 14
 instance = dht11.DHT11(pin=14)
 
+a = 0
+
 try:
-    while True:
+    while a < 1:
         result = instance.read()
         if result.is_valid():
             print("Last valid input: " + str(datetime.datetime.now()))
@@ -24,7 +26,7 @@ try:
             print("Temperature: %-3.1f C" % result.temperature)
             print("Humidity: %-3.1f %%" % result.humidity)
 
-        time.sleep(30)
+        time.sleep(10)
 
 except KeyboardInterrupt:
     print("Cleanup")
