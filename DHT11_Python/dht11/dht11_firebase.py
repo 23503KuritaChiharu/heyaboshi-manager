@@ -9,7 +9,7 @@ import datetime
 
 def db():
     # cred = credentials.Certificate('./<your service account json>')
-    cred = credentials.Certificate('./heyaboshi-manager-firebase-adminsdk-avq9f-8e91ef2815.json')
+    cred = credentials.Certificate('/home/pi/Desktop/heyaboshi-manager/DHT11_Python/heyaboshi-manager-firebase-adminsdk-815.json')
 
     firebase_admin.initialize_app(cred, {
         # 'databaseURL': 'https://<your database url>'
