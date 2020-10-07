@@ -58,7 +58,7 @@ users_ref = db.reference('/devices/test_device_1')
 #         }
 #     })
 
-print(users_ref.get())
+print(users_ref.child.get())
 
 
 
