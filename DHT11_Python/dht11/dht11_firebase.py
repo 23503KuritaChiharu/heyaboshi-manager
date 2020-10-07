@@ -58,6 +58,15 @@ users_ref = db.reference('/devices/test_device_1')
 #         }
 #     })
 
+print(users_ref.get())
+
+
+
+
+
+
+
+
 # databaseにデータを追加する
 users_ref.child('3').set({
         'humidity': result.humidity, 
@@ -74,6 +83,7 @@ users_ref.child('4').set({
 })
 
 ##データを取得する
-print(users_ref.get())
+# print(users_ref.get())
+
 
 
